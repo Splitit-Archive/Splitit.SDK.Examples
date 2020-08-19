@@ -1,0 +1,22 @@
+{
+  "name": "sdk-node-unit-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "tsc && mocha 'dist/*.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.0.1",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@types/mocha": "^7.0.2",
+    "bluebird": "^3.7.2",
+    "date-fns": "^2.14.0",
+    "request": "^2.88.2",
+    "splitit-sdk-nodejs": "^1.5.0"
+  }
+}
