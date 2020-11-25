@@ -1,16 +1,12 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
-
 use SplititSdkClient\ApiException;
 use SplititSdkClient\Configuration;
 use SplititSdkClient\Model\CreateInstallmentPlanRequest;
 use SplititSdkClient\Model\GetInstallmentsPlanSearchCriteriaRequest;
 use SplititSdkClient\Model\InstallmentPlanQueryCriteria;
 use SplititSdkClient\Model\PaymentToken;
-use SplititSdkClient\Model\PaymentWizardData;
 use SplititSdkClient\Model\PlanApprovalEvidence;
-use SplititSdkClient\Model\RedirectUrls;
 use SplititSdkClient\Model\VerifyPaymentRequest;
 use SplititSdkClient\Api\LoginApi;
 use SplititSdkClient\Api\InstallmentPlanApi;
@@ -21,8 +17,7 @@ use SplititSdkClient\Model\AddressData;
 use SplititSdkClient\Model\MoneyWithCurrencyCode;
 use SplititSdkClient\Model\InitiateInstallmentPlanRequest;
 
-
-class PayWithCCToken
+class PaymentForm_PayWithCCToken
 {
     /**
      * @var InstallmentPlanApi
@@ -30,13 +25,6 @@ class PayWithCCToken
     protected $installmentPlanApi;
 
     const MERCHANT_AMOUNT = 600;
-
-    public function __construct()
-    {
-        // TODO: place api key here
-        // Configuration::sandbox()->setApiKey('_YOUR_SANDBOX_API_KEY_');
-        Configuration::sandbox()->setApiKey('0d756f86-29c3-4fde-9fa3-f21c898dfe0f');
-    }
 
     /**
      * Authenticate
@@ -131,6 +119,7 @@ class PayWithCCToken
      *
      * @param $newPlanNumber
      * @param $token
+     * @return \SplititSdkClient\Model\CreateInstallmentsPlanResponse
      * @throws ApiException
      */
     public function PayWithCCToken($newPlanNumber, $token)
@@ -144,7 +133,7 @@ class PayWithCCToken
                 'type' => 'card',
             )),
         ));
-        $this->installmentPlanApi->installmentPlanCreate($createInstallmentPlanRequest);
+        return $this->installmentPlanApi->installmentPlanCreate($createInstallmentPlanRequest);
     }
 
     /**
