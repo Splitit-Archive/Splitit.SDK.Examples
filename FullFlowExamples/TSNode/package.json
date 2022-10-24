@@ -15,7 +15,7 @@
   "dependencies": {
     "@types/mocha": "^7.0.2",
     "bluebird": "^3.7.2",
-    "date-fns": "^2.29.2",
+    "date-fns": "^2.29.3",
     "request": "^2.88.2",
     "splitit-sdk-nodejs": "^1.6.10"
   }
